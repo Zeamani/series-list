@@ -8,5 +8,5 @@
   4. React-transition-group
   5. React | Font Awesome
  
-В качестве источника информации используется TVMaze API.
+В качестве источника информации используется TVMaze API:
 https://www.tvmaze.com/api
