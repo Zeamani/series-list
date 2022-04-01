@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* font-family: 'Roboto', sans-serif; */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* font-family: 'Montserrat', sans-serif; */
+    
+@import colors
+
+@keyframes fadeInModalInner 
+    0% 
+        transform: translateX(100%);
+  
+    100% 
+        transform: translateX(0);
+
+@keyframes fadeOutModalInner 
+    0% 
+        transform: translateX(0);
+  
+    100% 
+        transform: translateX(100%);
+
+html, body
+    background: $color-background url('../img/background-app.jfif');
+    padding: 0;
+    margin: 0;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+
+body.modalOpen
+    overflow: hidden;
+
+.container 
+    margin: 0px auto;
+    padding: 0 15px;
+    max-width: 1200px;
+    position: relative;
+    z-index: 1;
+
+    @media (max-width: 1200px)
+        max-width: 900px;
+    @media (max-width: 980px)
+        max-width: 800px;
+    @media (max-width: 700px)
+        max-width: 400px;
+
+.App
+    padding: 30px 15px;
+
+.modal
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+
+.modal__inner
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: $color-background-2;
+    margin-left: auto;
+    width: 30%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+    touch-action: none;
+    animation: fadeInModalInner 0.3s;
+
+    @media (max-width: 1500px)
+        width: 45%;
+    @media (max-width: 1200px)
+        width: 50%;
+    @media (max-width: 980px)
+        width: 60%;
+    @media (max-width: 700px)
+        width: 100%;
+    
+.bd-window__head
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+    margin-bottom: 30px;
+
+.bd-window__cards-list
+    
+.bd-window__card
+    color: $color-text;
+    text-decoration: underline;
+    margin-bottom: 10px;
+    font-size: 18px;
+
+    a
+        color: $color-text;
+        margin-right: 8px;
+
+    span
+        font-size: 16px;
+        cursor: pointer;
+        
+
+    span:hover
+        position: relative;
+        border: 1px solid $color-border;
+        padding: 0 2px;
+        right: 3px;
+        border-radius: 50%;
+
+.appButton
+    background-color: $color-blocks;
+    border: none;
+    box-shadow: inset 0px -5px 10px 0px rgba(0, 0, 0, 0.3);
+    padding: 11px 11px;
+    font-size: 16px;
+    color: $color-text;
+    cursor: pointer;
+    white-space: nowrap;
+
+    .button-icon
+        transform: translateX(0.5px);
+        font-size: 14px; 
+        margin-left: 5px;
+    
+.appButton:active
+    box-shadow: inset 0px 5px 10px 0px rgba(0, 0, 0, 0.3);
+
+.AppInput
+    position: relative;
+
+    input
+        box-sizing: border-box;
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 4px solid $color-blocks;
+        padding: 0px 2px;
+        font-size: 18px;
+        color: $color-text;
+
+    input:focus
+        outline: none;
+
+    input:focus ~ .input-icon
+        opacity: 1;
+
+    .input-icon
+        color: $color-text;
+        position: absolute;
+        top: 2px;
+        right: 5px;
+        opacity: 0;
+        cursor: pointer;
+        transition: 0.2s opacity;
+
+.AppInput:hover
+
+    .input-icon
+        opacity: 1;
+
+.App__header
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+
+.App__body
+    display: flex;
+    justify-content: center;
+
+.search
+    flex-basis: 600px;
+
+.cards-list
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 60px;
+    width: 100%;
+
+
+.card
+    background-color: $color-blocks; 
+    color: $color-text;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+.card__remove-btn
+    cursor: pointer;
+    position: absolute;
+    right: 8px;
+    top: 3px;
+    z-index: 5;
+    opacity: 0;
+    font-size: 24px;
+    transition: opacity 0.2s;
+
+.card:hover .card__remove-btn
+    opacity: 1;
+
+.card__img-wrap
+    width: 100%;
+    padding: 5px 0;
+    overflow: hidden;
+
+.card__img-inner
+    padding-bottom: 80%;
+    position: relative;
+
+    .card__img_back
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 110%;
+        height: 110%;
+        transform: translate(-4%, -4%);
+        object-fit: cover;
+        filter: blur(3px) brightness(0.8);
+
+    .card__img_front 
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: scale-down;
+        
+    .card__no-image
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        font-size: 22px;
+
+
+.card__content
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+.card__title
+    flex-grow: 0;
+    padding: 15px 0;
+    text-align: center;
+    margin: auto;
+    font-family: 'Montserrat', sans-serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+
+.card__table-info
+    flex-grow: 1;
+    width: 100%;
+    border: 2px solid $color-blocks;
+    border-left-width: 8px;
+    border-right-width: 8px;
+    border-bottom-width: 8px;
+    border-collapse: collapse; 
+    margin-top: auto;
+
+.card__cell
+    border: 1px solid $color-border;
+    width: 33%;
+
+.item-enter 
+  opacity: 0;
+.item-enter-active 
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+.item-exit 
+  opacity: 1;
+.item-exit-active 
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+
+
+.cell-info
+    text-align: center;
+    padding: 5px 0;
+
+.cell-info__body
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 3px;
+
+    a
+        color: inherit;
+
+.cell-info__subtitle
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: $color-text-2;
+
